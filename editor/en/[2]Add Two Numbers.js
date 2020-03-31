@@ -1,28 +1,28 @@
-//给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。
+//You are given two non-empty linked lists representing two non-negative integer
+//s. The digits are stored in reverse order and each of their nodes contain a sing
+//le digit. Add the two numbers and return it as a linked list.
 //
-// 如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。
+// You may assume the two numbers do not contain any leading zero, except the nu
+//mber 0 itself.
 //
-// 您可以假设除了数字 0 之外，这两个数都不会以 0 开头。
+// Example:
 //
-// 示例：
 //
-// 输入：(2 -> 4 -> 3) + (5 -> 6 -> 4)
-//输出：7 -> 0 -> 8
-//原因：342 + 465 = 807
+//Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+//Output: 7 -> 0 -> 8
+//Explanation: 342 + 465 = 807.
 //
-// Related Topics 链表 数学
+// Related Topics Linked List Math
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
-
 /**
  * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
  */
-function ListNode(val) {
-    this.val = val;
-    this.next = null;
-}
-
 /**
  * @param {ListNode} l1
  * @param {ListNode} l2
@@ -65,7 +65,7 @@ var addTwoNumbers = function (l1, l2) {
 };
 //leetcode submit region end(Prohibit modification and deletion)
 
-require('./util')
+require('../util');
 
 const l1 = getListFromArray([2, 4, 3])
 
