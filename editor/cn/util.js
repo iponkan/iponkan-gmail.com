@@ -57,6 +57,5 @@ module.exports = {
 
 global.log = log
 global.logList = logList
-global.ListNode = ListNode
 global.getListFromArray = getListFromArray
 global.getArrayFromList = getArrayFromList
