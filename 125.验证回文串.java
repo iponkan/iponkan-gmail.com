@@ -1,5 +1,7 @@
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Stack;
 
 /*
  * @lc app=leetcode.cn id=125 lang=java
@@ -39,7 +41,7 @@ class Main {
         // Create a new Solution instance
         Solution solution = new Solution();
         // Create a test case
-        String testCase = "aaaadfsdfasd";
+        String testCase = "tenet";
         // Get the answer
         boolean answer = solution.isPalindrome(testCase);
         // Print the answer
@@ -60,20 +62,28 @@ class Solution {
         String s1 = s.replaceAll("(?i)[^a-zA-Z0-9\u4E00-\u9FA5]", "");// 去除空格
         char[] chars = s1.toLowerCase().toCharArray();
 
-        Queue<Character> queue = new LinkedList<Character>();
-
+        List<Character> charList = new ArrayList<Character>();
         for (int i = 0; i < chars.length; i++) {
-            System.out.println("queue===" + queue);
-            if (queue.size() == 0) {
-                queue.offer(chars[i]);
-            } else if (chars[i] == queue.peek()) {
-                queue.poll();
-            } else {
-                queue.offer(chars[i]);
+            charList.add(chars[i]);
+        }
+        if (charList.size() % 2 == 1) {
+            charList.remove(charList.size() / 2);
+        }
+
+        Stack<Character> stack = new Stack<Character>();
+
+        for (int i = 0; i < charList.size(); i++) {
+            if (i < charList.size() / 2) {
+                stack.push(charList.get(i));
+            }
+            if (i >= charList.size() / 2) {
+                if (stack.peek() == charList.get(i)) {
+                    stack.pop();
+                }
             }
         }
 
-        if (queue.size() == 0) {
+        if (stack.size() == 0) {
             return true;
         }
 
