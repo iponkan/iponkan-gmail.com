@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
 
 /*
  * @lc app=leetcode.cn id=125 lang=java
@@ -58,35 +55,33 @@ class Solution {
             return true;
         }
 
-        String s1 = s.replaceAll("(?i)[^a-zA-Z0-9\u4E00-\u9FA5]", "");// 去除空格
-        char[] chars = s1.toLowerCase().toCharArray();
+        int i = 0;
+        int j = s.length() - 1;
 
-        List<Character> charList = new ArrayList<Character>();
-        for (int i = 0; i < chars.length; i++) {
-            charList.add(chars[i]);
-        }
-        if (charList.size() % 2 == 1) {
-            charList.remove(charList.size() / 2);
-        }
-
-        Stack<Character> stack = new Stack<Character>();
-
-        for (int i = 0; i < charList.size(); i++) {
-            if (i < charList.size() / 2) {
-                stack.push(charList.get(i));
+        s = s.toLowerCase();
+        while (i < j) {
+            if (!Character.isLetterOrDigit(s.charAt(i))) {
+                i++;
+                continue;
             }
-            if (i >= charList.size() / 2) {
-                if (stack.peek() == charList.get(i)) {
-                    stack.pop();
-                }
+
+            if (!Character.isLetterOrDigit(s.charAt(j))) {
+                j--;
+                continue;
+            }
+
+            if (s.charAt(i) == s.charAt(j)) {
+                i++;
+                j--;
+                continue;
+            } else {
+                return false;
+
             }
         }
 
-        if (stack.size() == 0) {
-            return true;
-        }
+        return true;
 
-        return false;
     }
 }
 // @lc code=end
