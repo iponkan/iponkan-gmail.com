@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
 /*
  * @lc app=leetcode.cn id=125 lang=java
  *
@@ -57,8 +60,21 @@ class Solution {
         String s1 = s.replaceAll("(?i)[^a-zA-Z0-9\u4E00-\u9FA5]", "");// 去除空格
         char[] chars = s1.toLowerCase().toCharArray();
 
+        Queue<Character> queue = new LinkedList<Character>();
+
         for (int i = 0; i < chars.length; i++) {
-            System.out.println(chars[i] + "\n");
+            System.out.println("queue===" + queue);
+            if (queue.size() == 0) {
+                queue.offer(chars[i]);
+            } else if (chars[i] == queue.peek()) {
+                queue.poll();
+            } else {
+                queue.offer(chars[i]);
+            }
+        }
+
+        if (queue.size() == 0) {
+            return true;
         }
 
         return false;
